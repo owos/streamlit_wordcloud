@@ -13,7 +13,8 @@ from htbuilder.units import percent, px
 from htbuilder.funcs import rgba, rgb
 import cv2 as cv
 
- 
+st.title('WordCloud Maker') 
+st.subheader('This app, takes in a raw text file, cleans it and output a wordcloud for you')
 def fig2data ( fig ):
     """
     @brief Convert a Matplotlib figure to a numpy array
@@ -33,7 +34,7 @@ def numpy_to_binary(arr):
     print(type(io_buf))
     return io_buf.read()
 
-st.title('WordCloud Maker')
+
 
 def clean_text(text):
     
