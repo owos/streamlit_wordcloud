@@ -8,11 +8,10 @@ from wordcloud import STOPWORDS
 import streamlit as st
 import io
 from PIL import Image
-from htbuilder import HtmlElement, div, ul, li, br, hr, a, p, img, styles, classes, fonts
-from htbuilder.units import percent, px
-from htbuilder.funcs import rgba, rgb
+from styling import footer
 import cv2 as cv
 
+st.cache
 st.title('WordCloud Maker') 
 st.subheader('This app, takes in a raw text file, cleans it and output a wordcloud for you')
 def fig2data ( fig ):
@@ -122,75 +121,6 @@ def inputs():
     run = st.button('Generate Cloud', key=None, help=None, on_click=None, args=None, kwargs=None)
     return file, width, height, max_words, background_color, run
 
-
-#footer
-def image(src_as_string, **style):
-    return img(src=src_as_string, style=styles(**style))
-
-
-def link(link, text, **style):
-    return a(_href=link, _target="_blank", style=styles(**style))(text)
-
-
-def layout(*args):
-
-    style = """
-    <style>
-      # MainMenu {visibility: hidden;}
-      footer {visibility: hidden;}
-     .stApp { bottom: 105px; }
-    </style>
-    """
-
-    style_div = styles(
-        position="fixed",
-        left=0,
-        bottom=0,
-        margin=px(0, 0, 0, 0),
-        width=percent(100),
-        color="black",
-        text_align="center",
-        height="auto",
-        opacity=1
-    )
-
-    style_hr = styles(
-        display="block",
-        margin=px(8, 8, "auto", "auto"),
-        border_style="inset",
-        border_width=px(2)
-    )
-
-    body = p()
-    foot = div(
-        style=style_div
-    )(
-        hr(
-            style=style_hr
-        ),
-        body
-    )
-
-    st.markdown(style, unsafe_allow_html=True)
-
-    for arg in args:
-        if isinstance(arg, str):
-            body(arg)
-
-        elif isinstance(arg, HtmlElement):
-            body(arg)
-
-    st.markdown(str(foot), unsafe_allow_html=True)
-
-
-def footer():
-    myargs = [
-        " with ❤️ by ",
-        link("https://twitter.com/AbrahamOwos", "@AbrahamOwos"),
-        br(),
-        " ⚙️ Want me to change or add someing? Hit me up" ,
-    ]
-    layout(*myargs)
 
 
 
