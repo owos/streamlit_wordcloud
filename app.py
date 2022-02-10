@@ -211,13 +211,13 @@ if __name__ == '__main__':
             wdc = WordCloud(width=width, height=height, max_words=max_words, background_color=background_color, 
                             min_word_length = 4, colormap = "plasma").generate_from_frequencies(word_freq)
 
-            
+            '''
             fig, ax = plt.subplots()
             plt.imshow(wdc, interpolation='bilinear')
             plt.axis('off')
             
             im = numpy_to_binary(fig2data ( fig ))
-            st.pyplot(fig)
+            st.pyplot(fig)'''
 
             plt.figure(figsize=(12, 14))
 
