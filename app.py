@@ -11,7 +11,7 @@ from PIL import Image
 from styling import footer
 import cv2 as cv
 
-st.cache
+st.cache(allow_output_mutation=True)
 st.title('WordCloud Maker') 
 st.subheader('This app, takes in a raw text file, cleans it and output a wordcloud for you')
 def fig2data ( fig ):
