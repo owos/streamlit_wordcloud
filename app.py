@@ -219,7 +219,19 @@ if __name__ == '__main__':
             im = numpy_to_binary(fig2data ( fig ))
             st.pyplot(fig)
 
-            download = st.download_button('Download Image', im, file_name='wordcloud.png', mime='image/png', key=None, help=None, 
+            plt.figure(figsize=(12, 14))
+
+            import plotly as pxx
+            import plotly.express as express
+            fig, ax = plt.subplots()
+            fig2 =express.imshow(wdc)
+            fig2.update_xaxes(visible=False)
+            fig2.update_yaxes(visible=False)
+            img_bytes = fig2.to_image(format="png")
+            st.plotly_chart(fig2)
+            
+
+            download = st.download_button('Download Image', img_bytes, file_name='wordcloud.png', mime='image/png', key=None, help=None, 
                               on_click=None, args=None, kwargs=None)
         else:
             st.write('Please upload the document first')
